@@ -1,0 +1,11 @@
+[package]
+name = "rust-midi-glfw"
+version = "0.1.0"
+authors = ["Ashton Snelgrove <asnelgrove@sofi.org>"]
+edition = "2018"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+glfw = "0.34.0"
+midir = "0.5.0"
