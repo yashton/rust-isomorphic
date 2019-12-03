@@ -1,3 +1,4 @@
+extern crate structopt;
 extern crate glfw;
 extern crate midir;
 
@@ -9,8 +10,34 @@ use keycodes::key_to_point;
 use glfw::{Action, Context, Key};
 use midir::{MidiOutput, MidiOutputPort};
 use std::io::stdin;
+use structopt::StructOpt;
+
+// something else interesting 2, -1, 0
+// Janko 2, 1, 0
+// Inverted Gerhard (1, -3, 0) (4, 1, -60)
+// Gerhard 3, -1, 30
+// Tonnetz 4, -3, -30
+// Guitar A 1, -4, 0
+// Guitar B 1, -5, 0
+// Park 2, -3, 30
+// Wellesy 5, 13, 30
+// Wicki-Haydn 2, 7, 0
+
+
+#[derive(StructOpt)]
+#[structopt(name = "Isomorphic Keyboard", version = "1.0", author = "Ashton Snelgrove")]
+struct Opts {
+    #[structopt(short = "a", long = "basis-up", default_value = "4")]
+    basis_up: i8,
+    #[structopt(short = "b", long = "basis-up-right", default_value = "-3")]
+    basis_up_right: i8,
+    #[structopt(short, long, default_value = "0")]
+    transpose: i8,
+}
 
 fn main() {
+    let opts: Opts = Opts::from_args();
+
     let midi_out = MidiOutput::new("My Test Output").unwrap();
     let out_ports = midi_out.ports();
     let out_port: &MidiOutputPort = match out_ports.len() {
@@ -35,11 +62,11 @@ fn main() {
     let mut conn_out = midi_out.connect(out_port, "midir-test").unwrap();
 
     let names = vec!["C", "C#/Db", "D", "D#/Eb", "E", "F", "F#/Gb", "G", "G#/Ab", "A", "A#/Bb", "B"];
-    let basis = BasisVector(4, -3);
+    let basis = BasisVector(opts.basis_up, opts.basis_up_right);
 
     let mut glfw = glfw::init(glfw::FAIL_ON_ERRORS).unwrap();
     // Create a windowed mode window and its OpenGL context
-    let (mut window, events) = glfw.create_window(300, 300, "Hello this is window", glfw::WindowMode::Windowed)
+    let (mut window, events) = glfw.create_window(300, 300, "hello world!", glfw::WindowMode::Windowed)
         .expect("Failed to create GLFW window.");
 
     // Make the window's context current
@@ -72,7 +99,7 @@ fn main() {
                     match key_to_point(k) {
                         Some(k) => {
                             let Interval(i) = point_to_interval(&basis, &k);
-                            let note = (i + 60) as u8;
+                            let note = (i + 60 + opts.transpose) as u8;
                             let name = note % 12;
                             let octave = note / 12 - 2;
                             match a {

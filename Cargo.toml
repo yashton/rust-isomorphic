@@ -9,3 +9,5 @@ edition = "2018"
 [dependencies]
 glfw = "0.34.0"
 midir = { git = "https://github.com/Boddlnagg/midir" }
+clap = "2.33.0"
+structopt = "0.3"
