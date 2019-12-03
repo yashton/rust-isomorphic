@@ -79,7 +79,7 @@ pub fn key_to_point(key: glfw::Key) -> Option<Point> {
         LeftControl =>  Some(Point(-7, 2)),
         LeftAlt =>  Some(Point(-6, 2)),
         LeftSuper =>  Some(Point(-5, 2)),
-        RightSuper =>  Some(Point(1, 2)),
+        Menu =>  Some(Point(1, 2)),
         RightAlt =>  Some(Point(2, 2)),
         RightControl =>  Some(Point(3, 2)),
         Left =>  Some(Point(4, 2)),
