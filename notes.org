@@ -1,0 +1,70 @@
+* hexagonal isomorphic
+** orientation
+The hand is horizontally oriented. The thumb is able to be below the line of the other fingers, but it is awkward to try and stack other fingers. rotating the fingers 60 degrees is accomplished by aligning the fingers along the neighbor axis, or splaying the fingers at a diagonal (which is most comfortable index descending to pinky). Layouts seem to fall into roughly two groups, defined by which axis the fingers are aligned with. The standard technique of pivoting around the thumb as the hand moves can be very awkward in the hexagonal layout - the side of the thumb is usually used on the keyboard, which is too large to accurately hit a hexagon in close proximity to another finger.
+*** chord oriented (vertical)
+Examples: Gerhard, Park
+The closer interval is perpendicular to the hand axis. The larger interval is along the hand axis. This makes playing chords easier, for example the notes of the triad, seventh, and ninth fall directly under the fingers in Gerhard and Tonnetz, and accidentals are just slightly off axis from the existing notes.
+*** scale oriented (horizontal)
+Generally use a half or whole step along the finger axis, which allows sequences to be played more easily. Janko/6-6 Balanced,  Inverted Gerhard and
+C-System chromatic takes advantage of the ease of diagonal splay
+*** observations
+Tonnetz and Inverted Gerhard provide good chromatic motion along the finger axis with thirds being convenient accessible intervals.
+Gerhard excels at complex jazz chords.
+Janko/6-6 balanced is the most logical step up from the standard piano, but an enormous amount of redunancy for the limited space available on the Dot keyboard. It suffers from the same range issues of the normal piano, the smaller keys making 9ths easier to reach. The ability to use the thumb at a distance from the other fingers due to the redundancy is of note. A conversion of a standard keyboard controller would probably be best for this layout.
+Guitar A has easily accesible blues scale, and fits nicely under the fingers for melodic. There is worse symmetry compared to Inverted Gerhard.
+Guitar B requires more of a stretch to play chromatically, and the intervals are quite wide. Chords are awkward.
+My brain is strongly inclined to a "right and up" increasing interval, similar to the piano and guitar. This makes C and B System feel wrong, and Wicki-Haydn with its poor chromatic and accidentals.
+In general, my inclination is chromatic along the x-axis, with thirds on the rows above. Tonnetz and Inverted Gerhard feel good. Gerhard seems best for chord work, though Tonnetz isn't too bad for chords.
+** layout
+The hexagon can be aligned with two vertices on the y-axis and two edges parallel to the x-axis (vertical). The alternate orientation is rotated 90 degrees with two vertices on the x-axis and two edges parallel to the y-axis (horizontal). Calculating the basis vector using the two intervals bisected by the positive along the axis makes for a consistent descriptor (any two non-opposite vector is valid).
+*** vertical
+Layouts: Gerhard, Tonnetz, Park, Wesley
+*** horizontal
+Layouts: Janko, Inverted Gerhard, Guitar-like A/B
+*** DOT keyboard
+The Lofree DOT offers a regular spacing of keys, using circular keycaps. 79 keys, though CapsLock has proven not useful and the Fn key is local hardware only. 6 rows, 14 columns, though shift, space, delete, caps lock and return take more than one slot.
+
+The grid is aligned in a vertical configuration. Horizontal layouts require adopting a 60 degree slant.
+I'm still evaluating the best alignments with the keyboard. Tonnetz suffers from the diagonal, with a wide range but little repetition on the keyboard. Many scales are only playable in one position. Inverted Gerhard benefits from a vertical alignment, and I have experimented with two orientations.
+The range can be crazy. In Tonnetz, the lowest key is D0, and the highest is F7.
+** rotation
+To rotate, given a basis vector of two adjacent edges (a,b), +60deg is (b,b-a) and -60deg is (a-b,a).
+0: a, b
+-60: a-b, a
+-120: -b, a-b
++/-180: -a, -b
++120: b-a, -b
++60: b, b-a
+
+Vertical
+    a   b
+a-b      -a+b
+   -b  -a
+
+Horizontal
+     a-b
+  -b     a
+  -a     b
+     b-a
+
+** possibilities
+There are a finite number of practical keyboard layouts. Wider intervals than the octave are possible.
+
+In general, a basis vector with the same value in both directions will yield a layout with missing intervals. Large intervals in either direction will often cause similar missing values.
+
+Many possibilities are transpositions or rotations. Many of these are of interest - e.g. Inverted Gerhard.
+Many options are variants on others. e.g. Inverted Gerhard, Guitar A/B, Fernandez are all variations on a vertical layout with a chromatic interval, differing in the offset of the next row; Wicki-Haydn, B-system, and Janko are all variants on a vertical layout with a whole step.
+* quadrilateral isomorphic
+** Guitar major thirds
+E-G#-C-E-G#-C
+This has felt incredibly natural. The chromatic jump after four fingers makes a lot of things playable in more positions. Thirds between strings has made jazz voicings easier. I was able to string up my Telecaster by combining together two sets of standard strings.
+Power chords are only slightly more awkward, using the index and pinky. Alternative is to play two strings away muting the one between, but this hasn't been satisfactory.
+Range is smaller, but doesn't seem to be that problematic so far, needs more experience.
+There is a loss in the easy movement of chords up and down a string using fourths. All fourths tuning would make this easier, but lose some of the advantages. Easier access to voicings makes up for this I think.
+* semi-isomorphic
+** Guitar tunings
+guitar tuned F A C E G B, gives you major and minor open chords, good spacing for jazz chords (first four notes is a maj9), consistent fingering every two strings, but also the Tonic/Dominant vertical movement that is convenient in standard.
+
+another variant - E G Bb D F ? ? gives you min7b5b9, which can be barred and then increase the intervals, so the bar is always on the root. this makes it pretty awkward to play larger scales, the strings are too close together in intervals, and the octave is 4 strings away.
+
+pentatonic is intervals 3-2-2-3-2 repeating. Probably not useful as a concept.
